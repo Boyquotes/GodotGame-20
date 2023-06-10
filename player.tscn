@@ -1,0 +1,213 @@
+[gd_scene load_steps=14 format=3 uid="uid://dgh2nalusg7j7"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_2cm5i"]
+[ext_resource type="Material" uid="uid://cvegn8fmpdr7d" path="res://glassesmaterial.tres" id="2_1yvjq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jolq4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jqcdt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0hkp2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xw8mu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqhgt"]
+albedo_color = Color(0.141176, 0.141176, 0.141176, 1)
+metallic = 0.62
+roughness = 0.44
+
+[sub_resource type="PrismMesh" id="PrismMesh_akv3w"]
+lightmap_size_hint = Vector2i(14, 21)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axd2g"]
+emission_enabled = true
+emission = Color(0.737255, 0.67451, 0.564706, 1)
+emission_energy_multiplier = 10.17
+
+[sub_resource type="PrismMesh" id="PrismMesh_j5bec"]
+
+[sub_resource type="Animation" id="Animation_a3oac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/Foots/footL:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.25, -1.501, 0.014)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/Foots/footR:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25, -1.501, 0.014)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/Foots/footR:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body/Foots/footL:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u6566"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/Foots/footR")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/Foots/footL")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array()
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/Foots/footL:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.25, -1.501, 0.5), Vector3(-0.25, -1.501, -0.5), Vector3(-0.25, -1.501, 0.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body/Foots/footR:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.25, -1.501, -0.5), Vector3(0.25, -1.501, 0.5), Vector3(0.25, -1.501, -0.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("body/Foots/footR:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.785398, 0, 0), Vector3(-0.785398, 0, 0), Vector3(0.785398, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("body/Foots/footL:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.785398, 0, 0), Vector3(0.785398, 0, 0), Vector3(-0.785398, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4qlkm"]
+_data = {
+"RESET": SubResource("Animation_a3oac"),
+"walk": SubResource("Animation_u6566")
+}
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0081172, -1.19209e-07, 0.00917482)
+script = ExtResource("1_2cm5i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.32053, 0, 0, 0, 1, 0, -0.32807, 0)
+shape = SubResource("CapsuleShape3D_jolq4")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.25, -3)
+
+[node name="body" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="body"]
+mesh = SubResource("CapsuleMesh_jqcdt")
+skeleton = NodePath("../..")
+
+[node name="BagPack" type="MeshInstance3D" parent="body"]
+transform = Transform3D(0.708703, 0, 0, 0, 0.395581, 0, 0, 0, 0.460775, 0, 0, 0.440187)
+mesh = SubResource("CapsuleMesh_jqcdt")
+skeleton = NodePath("../..")
+
+[node name="eyes" type="MeshInstance3D" parent="body"]
+transform = Transform3D(0.74401, 0, 0, 0, 0.226716, 0, 0, 0, 0.444907, 0, 0.470145, -0.336554)
+mesh = SubResource("CapsuleMesh_0hkp2")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_1yvjq")
+
+[node name="Gun" type="MeshInstance3D" parent="body"]
+transform = Transform3D(0.244079, 0, 0, 0, 0.338255, 0, 0, 0, 1, 0.446264, -1.19209e-07, -0.432069)
+mesh = SubResource("BoxMesh_xw8mu")
+surface_material_override/0 = SubResource("StandardMaterial3D_qqhgt")
+
+[node name="SpawnPoint" type="Marker3D" parent="body/Gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.57045)
+
+[node name="MuzzleFlare" type="MeshInstance3D" parent="body"]
+transform = Transform3D(0.481666, 0, 0, 0, -2.21499e-08, -0.263145, 0, 0.506731, -1.15024e-08, 0.448048, -1.19209e-07, -0.95029)
+visible = false
+mesh = SubResource("PrismMesh_akv3w")
+skeleton = NodePath("../Gun")
+surface_material_override/0 = SubResource("StandardMaterial3D_axd2g")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="body/MuzzleFlare"]
+light_color = Color(0.870588, 0.701961, 0.478431, 1)
+shadow_enabled = true
+
+[node name="Foots" type="Node3D" parent="body"]
+
+[node name="footR" type="MeshInstance3D" parent="body/Foots"]
+transform = Transform3D(0.36726, 0, 0, 0, 0.350798, 0, 0, 0, 0.58252, 0.25, -1.501, 0.014)
+mesh = SubResource("PrismMesh_j5bec")
+
+[node name="footL" type="MeshInstance3D" parent="body/Foots"]
+transform = Transform3D(0.36726, 0, 0, 0, 0.350798, 0, 0, 0, 0.58252, -0.25, -1.501, 0.014)
+mesh = SubResource("PrismMesh_j5bec")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4qlkm")
+}
